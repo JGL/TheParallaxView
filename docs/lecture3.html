@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>The Parallax View: Lecture 1: Digital Pixel 1.</title>
+		<title>The Parallax View: Lecture 3: Computer Vision 1.</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/whiteJGL.css">
@@ -27,354 +27,54 @@
 				<section>
 					<h2>The Parallax View</h2>
 					<p>Joel Gethin Lewis</p>
-					<p>Lecture 1: Digital Pixel 1</p>
+					<p>Lecture 3: Computer Vision 1</p>
 				</section>
 				<section>
 					<h3>What I'm going to talk about today:</h3>
 					<ol>
-						<li>Introduce myself.</li>
-						<li>The aim of this course.</li>
-		                <li>What binary numbers are.</li>
-						<li>Introduction to p5.js.</li>
-		                <li>How images are made using arrays of pixels.</li>
-		                <li>Changing pixel values to animate a static image.</li>
-		                <li>Brief: the materiality of pixels.</li>
+		                <li>Thresholding images into different parts.</li>
+						<li>Pixel differences between frames of video.</li>
+		                <li>Live tracking of colours, markers and faces.</li>
+		                <li>Brief: letting your computer see.</li>
 					</ol>
 				</section>
 				<section>
-					<h3>1. Introduce myself.</h3>
+					<h3>1. Thresholding images into different parts.</h3>
 					<ul>
-						<li>Born in London, grew up in Wales on a mountain.</li>
-						<li>BSc in Maths and Computer Science at <a href="http://www.imperial.ac.uk/">Imperial</a>, MA in Interaction Design at <a href="https://www.rca.ac.uk/">Royal College of Art</a>.</li>
-						<li>One year at <a href="http://www.fabrica.it/">Fabrica</a>.</li>
-						<li>Three years at <a href="http://uva.co.uk/">UnitedVisualArtists</a>.</li>
-						<li>Eight years at <a href="https://vimeo.com/hellicarandlewis">Hellicar&Lewis</a>.</li>
-						<li>Two years of teaching at CSM and RCA and <a href="https://joelgethinlewis.com/">working on my own projects</a>.</li>
+						<li>Throughout this lecture we'll be drawing on <a href="http://www.kylemcdonald.net/">Kyle McDonald</a>'s <a href="https://kylemcdonald.github.io/cv-examples/">cv-examples</a>. In session 5, we'll be connecting with him live.</li>
 					</ul>
 				</section>
 				<section>
-					<h3>2. The aim of this course.</h3>
+					<h3>2. Pixel differences between frames of video.</h3>
 					<ul>
-						<li>The digital image helps us to think about visual culture in a different way. Digital technologies allow us to probe how images can be made, including elements (such as style) that were previously thought to be exclusively the domain of humans.</li>
-						<li>The Parallax View will be an investigation into three different aspects of the digital image, each lasting for two weeks. For each aspect the first week will be an introduction to a brief, with a tutorial about the concepts involved. In the second week pair responses to the brief will be presented and constructively criticised by the group and invited guests.</li>
+						<li>.</li>
 					</ul>
 				</section>
 				<section>
-					<h3>2. The aim of this course (continued)</h3>
+					<h3>3. Live tracking of colours, markers and faces.</h3>
 					<ul>
-						<li>No programming experience is required, but you should bring a computer to all sessions. Programming and projects will occur in pairs.</li>
-						<li>Course website: <a href="https://jgl.github.io/TheParallaxView/">https://jgl.github.io/TheParallaxView/</a></li>
+						<li>.</li>
 					</ul>
 				</section>
 				<section>
-					<h3>3. What binary numbers are.</h3>
+					<h3>4. Brief: letting your computer see.</h3>
 					<ul>
-						<li>Counting is using groups of symbols to represent quantities or amounts.</li>
-						<li>Let's count to 100 in <a href="https://en.wikipedia.org/wiki/Decimal">Decimal</a>. When do we need a extra digits?</li>
-						<li>Let's count to 10 in <a href="https://en.wikipedia.org/wiki/Unary_numeral_system">Unary</a>.</li>
-						<li>Let's count to 20 in <a href="https://en.wikipedia.org/wiki/Binary_number">Binary</a>. When do we need an extra digit?</li>
-						<li>What's the biggest number you can count to on your fingers? On your fingers and toes?</li>
-					</ul>
-				</section>
-				<section>
-					<h3>3. What binary numbers are (continued).</h3>
-					<ul>
-						<li>Computers use binary to represent everything in <a href="https://en.wikipedia.org/wiki/Computer_memory">memory</a>.</li>
-						<li>A bit is a Binary digIT.</li>
-						<li>A byte is eight bits. (BEight).</li>
-						<li>A kilobyte is 1,024 (2^10) bytes, <a href="https://en.wikipedia.org/wiki/Kilobyte">mostly</a>.</li>
-						<li>A megabyte is 1,048,576 (2^20) bytes, <a href="https://en.wikipedia.org/wiki/Megabyte">mostly</a>.</li>
-					</ul>
-				</section>
-				<section>
-					<h3>3. What binary numbers are (continued).</h3>
-					<ul>
-						<li>One megabyte is approximately one minute of 128 kbit/s MP3 compressed music.</li>
-						<li>One megabyte is six seconds of uncompressed CD audio.</li>
-						<li>One megabyte is a typical English book volume in plain text format (500 pages × 2000 characters per page).</li>
-						<li>The human genome consists of DNA representing 800 MB of data. The parts that differentiate one person from another can be compressed to 4 MB!</li>
-					</ul>
-				</section>
-				<section>
-					<h3>3. What binary numbers are (continued).</h3>
-					<ul>
-						<li>There are different ways of storing numbers and words in computers, as whole these values are known as <a href="https://en.wikipedia.org/wiki/Data_type">Data types</a>.</li>
-						<li>Whole numbers or Integers are stored as <a href="https://en.wikipedia.org/wiki/Integer_%28computer_science%29">ints</a>. E.g. 0, 5, -567.</li>
-						<li>Numbers which are in between whole numbers are stored as <a href="https://en.wikipedia.org/wiki/Floating-point_arithmetic">Floating Points or floats</a>. E.g. 3.142 or -5.66343.</li>
-						<li>As these numbers are stored in certain amounts of memory, if they get too big (or negative, or precise) the computer can run out of memory to store them, or overflow. This is bad. See the <a href="https://en.wikipedia.org/wiki/Year_2000_problem">Y2K bug</a>.</li>
-					</ul>
-				</section>
-				<section>
-					<h3>3. What binary numbers are (continued).</h3>
-					<ul>
-						<li>You can also store individual characters of the alphabet as <a href="https://en.wikipedia.org/wiki/Character_(computing)">chars</a>.</li>
-						<li>However, there are different encodings of characters - <a href="https://en.wikipedia.org/wiki/ASCII">ASCII</a> and <a href="https://en.wikipedia.org/wiki/Unicode">Unicode</a> for example - which allow different character sets to be displayed.</li>
-						<li>You can store words (multiple characters) in strings - which are actually just lists of chars.</li>
-						<li>Another name for lists are <a href="https://en.wikipedia.org/wiki/Associative_array">arrays</a>.</li>
-						<li>Strings are one <a href="https://en.wikipedia.org/wiki/Dimension">dimensional</a> arrays. We'll be discussing two dimensional arrays later today!</li>
-						<li>Data can be stored as fixed values (<a href="https://en.wikipedia.org/wiki/Constant_(computer_programming)">constants</a>) or values that can change (<a href="https://en.wikipedia.org/wiki/Variable_%28computer_science%29">variables</a>).</li>
-					</ul>
-				</section>
-				<section>
-					<h3>4. Introduction to p5.js.</h3>
-					<ul>
-						<li>I'm going to teach you all the programming knowledge you need to complete this course.</li>
-						<li>We are going to use <a href="https://p5js.org/">p5.js</a> during this course, which is a library of code that aims to make coding accessible for artists, designers, educators and beginners. It's written in a language called <a href="https://en.wikipedia.org/wiki/JavaScript">JavaScript (JS)</a>, which is widely used on today's web.</li>
-						<li>We are going to be writing all the code for this course using the <a href="https://editor.p5js.org/">brand new p5.js Web Editor</a> - it's a really great way of seeing your code live and also makes it easy to share your work with others, for free!</li>
-						<li>There are other ways of running p5.js - on your own computer or on your own website - you can find out how to do on the <a href="https://p5js.org/get-started/">Get Started page of the p5.js website</a>.</li>
-						<li>Let's start by having a look around the <a href="https://p5js.org/">p5.js website</a>, some <a href="http://p5js.org/examples/">examples</a>, the <a href="http://p5js.org/reference/">reference</a>, some <a href="http://p5js.org/libraries/">libraries</a>, before finally making accounts on the <a href="https://editor.p5js.org/">brand new p5.js Web Editor</a>.
-					</ul>
-				</section>
-				<section>
-					<h3>4. Introduction to p5.js (continued).</h3>
-					<ul>
-						<li>Now that you've made an account on the <a href="https://editor.p5js.org/">brand new p5.js Web Editor</a>, let's explore, notice you can click the arrow next to the sketch.js text to display the project-folder, where you can see the separate files that make up your p5.js sketch currently.</li>
-						<li>p5.js is designed to be a sketchbook, where you can quickly try out ideas and build on examples that are provided to you.</li>
-						<li>Also notice that you can press the auto-refresh tickbox, now try changing some numbers in the text editor area, with the line numbers on the side.</li>
-						<li>You can also change the name of your project, add files to it and load your older sketches. You can also customise the appearance of the editor by clicking the cog icon in the top right hand corner.</li>
-					</ul>
-				</section>
-				<section>
-					<h3>4. Introduction to p5.js (continued).</h3>
-					<ul>
-						<li>Now go through loading in examples and playing with them, it's ok to experiment.</li>
-						<li>Demonstrate console.log()</li>
-					</ul>
-				</section>
-				<section>
-					<h3>4. Introduction to p5.js (continued).</h3>
-					<p>The following content is all from the <a href="https://github.com/processing/p5.js/wiki/JavaScript-basics">JavaScript Basics</a> section of the <a href="https://github.com/processing/p5.js/wiki">p5.js wiki</a>.</p>
-					<p><a href="https://github.com/processing/p5.js/wiki/JavaScript-basics#script-tag">How JavaScript gets added to webpages</a>.</p>
-					<p><a href="https://github.com/processing/p5.js/wiki/JavaScript-basics#console">The JavaScript console</a>.</p>
-					<p><a href="https://github.com/processing/p5.js/wiki/JavaScript-basics#variables">Variables</a>.</p>
-					<p><a href="https://github.com/processing/p5.js/wiki/JavaScript-basics#data-types">Types: Numbers, Strings and Booleans</a>.</p>
-					<p><a href="https://github.com/processing/p5.js/wiki/JavaScript-basics#assignment">Assignment</a> and <a href="https://github.com/processing/p5.js/wiki/JavaScript-basics#operators">operators.</p>
-					<p><a href="https://github.com/processing/p5.js/wiki/JavaScript-basics#arrays">Lists and Arrays in JavaScript</a>.</p>
-				</section>
-				<section>
-					<h3>4. Introduction to p5.js (continued).</h3>
-					<p>The following content is all from the <a href="https://github.com/processing/p5.js/wiki/JavaScript-basics">JavaScript Basics</a> section of the <a href="https://github.com/processing/p5.js/wiki">p5.js wiki</a>.</p>
-					<p>We've encountered a function before - console.log() - to output things to the JavaScript console.</a>.</p>
-					<p><a href="https://github.com/processing/p5.js/wiki/JavaScript-basics#functions">Functions in JavaScript</a>.</p>
-					<p>Two of the most useful functions in p5.js are setup() and draw() - setup() runs once and draw() runs every frame.</p>
-					<p><a href="https://p5js.org/reference/#/p5/draw">https://p5js.org/reference/#/p5/draw</a>. Don't forget you can edit any of the code!</p>
-				</section>
-				<section>
-					<h3>5. How images are made using arrays of pixels.</h3>
-					<ul>
-						<li>Two dimensional lists (or arrays) for remembering pixels.
-						2D arrays, or arrays of arrays.</li>
-						<li>Artwork: <a href="http://www.numeral.com/eicon.html">Every Icon (1997) John F. Simon, Jr.</a></li>
-						<li>Question, how might you store a two dimensional array within a one dimensional one?</li>
-					</ul>
-				</section>
-				<section>
-					<h3>5. How images are made using arrays of pixels (continued).</h3>
-					<p>The following content is all from the <a href="https://p5js.org/learn/">Learning</a> section of the <a href="https://p5js.org/">p5.js website</a>.</p>
-					<p>One thing to realise is that positions on computers go from the top down and from left to right - you measure vertically from the top of the screen rather than from the bottom.</p>
-					<p>A bit different from drawing graphs in school - so (3,5) means go three left and 5 down, rather than three left and 5 up</p>
-					<p><a href="https://p5js.org/learn/color.html">Colour (and drawing) in p5.js</a>.</p>
-				</section>
-				<section>
-					<h3>5. How images are made using arrays of pixels (continued).</h3>
-					<ul>
-						<li>We've just mixing together Red, Green and Blue (<a href="https://en.wikipedia.org/wiki/RGB_color_model">RGB</a>) colours to make any other colour.</li>
-						<li>Digital colour mixing is <a href="https://en.wikipedia.org/wiki/Additive_color">additive</a> while analogue paint mixing is <a href="https://en.wikipedia.org/wiki/Subtractive_color">subtractive</a>.</li>
-						<li>How does projected light mix?</li>
-						<li>As we just saw, there are other ways of mixing variables to make colours - for example Hue, Saturation and Brightness (<a href="https://en.wikipedia.org/wiki/HSL_and_HSV">HSB</a>).</li>
-						<li>I often use HSB in digital work to make it easy to blend between colours - much easier than RGB. You can visualise colour using a <a href="https://en.wikipedia.org/wiki/Color_wheel">colour wheel</a> or a <a href="https://en.wikipedia.org/wiki/Color_solid">colour solid</a>. <a href="https://en.wikipedia.org/wiki/Complementary_colors">Complementary colours</a> are on opposite sides of the colour wheel.</li>
-						<li><a href="https://en.wikipedia.org/wiki/Color_theory">Colour theory</a> is a huge area of study, for graphic design and even <a href="https://en.wikipedia.org/wiki/Color_psychology">psychology</a>.</li>
-					</ul>
-				</section>
-				<section>
-					<h3>5. How images are made using arrays of pixels (continued).</h3>
-					<p>The following content is all from the <a href="https://github.com/processing/p5.js/wiki/JavaScript-basics">JavaScript Basics</a> section of the <a href="https://github.com/processing/p5.js/wiki">p5.js wiki</a>.</p>
-					<p><a href="https://github.com/processing/p5.js/wiki/JavaScript-basics#conditionals">Conditionals in JavaScript</a>.</p>
-					<p><a href="https://github.com/processing/p5.js/wiki/JavaScript-basics#loops">Loops in JavaScript</a>.</p>
-					<p>Don't forget we can try everything in the <a href="https://github.com/processing/p5.js/wiki/JavaScript-basics#console">JavaScript console</a> without even having to add it to a p5.js program.</p>
-				</section>
-				<section>
-					<h3>5. How images are made using arrays of pixels (continued).</h3>
-					<p>Now that we know about colour in p5.js and we know about arrays, we are ready to tackle images in p5.js</p>
-					<p>An image is a grid of pixel colour values - R, G, B and an optional Alpha value.</p>
-					<p>Each pixel colour value stored as an 8 bit number</p>
-					<p>How many different values can you store in 8 bits?</p>
-				</section>
-				<section>
-					<h3>5. How images are made using arrays of pixels (continued).</h3>
-					<p>How many different values can you store in 8 bits?</p>
-					<p>2*2*2*2*2*2*2*2 or 2^8 or 256</p>
-					<p>So we have a range from 0-255 for each pixel colour value - 0 is a number too!</p>
-					<p>How do we make a grid of values using arrays?</p>
-					<p>We could make one massive list or array with all the pixel values</p>
-					<p>How big would that list have to be?</p>
-				</section>
-				<section>
-					<h3>5. How images are made using arrays of pixels (continued).</h3>
-					<p>How big would that list have to be?</p>
-					<p>We'd need width*height*4 slots in our big list</p>
-					<p>But that would make things a bit difficult to change or edit...</p>
-					<p>So lets make a list of lists or an array of arrays!</p>
-					<p>Make one list with width elements, and for every element in that list, store another list of height elements</p>
-					<p>You can then address the pixel at (x,y) by accessing the element pixels[x][y] - use two array operators.</p>
-				</section>
-				<section>
-					<h3>5. How images are made using arrays of pixels (continued).</h3>
-					<p>Don't forget that you measure from the top of the screen rather than from the bottom!</p>
-					<p>Let's start by looking at the p5.js reference, the place where all the functions you can use in p5.js are listed.</p>
-					<p>Let's see if they have anything about images...</p>
-					<p><a href="https://p5js.org/reference/">https://p5js.org/reference/</a></p>
-				</section>
-				<section>
-					<h3>5. How images are made using arrays of pixels (continued).</h3>
-					<p>Let's take a look at the createImage() function, and play with the examples provided:</p>
-					<p><a href="https://p5js.org/reference/#/p5/createImage">https://p5js.org/reference/#/p5/createImage</a></p>
-					<p>The last example is a bit strange, let's correct it (not everything on the internet is correct )-;). Pixel density is still a bit of a problem on the web.</p>
-					<p>I find the p5.js reference super useful - I usually have it open in a browser whenever I'm coding - it's not a memory test, so use all the help you can find.</p>
-				</section>
-				<section>
-					<h3>5. How images are made using arrays of pixels (continued).</h3>
-					<p>Now, I'm going to talk about two really important parts of coding that don't have anything to do with how the computer reads your code - rather how other humans can read your code.</p>
-					<p>Comments are a really useful way of writing notes to yourself (or others) to explain how your code works.</p>
-					<p><a href="https://github.com/processing/p5.js/wiki/JavaScript-basics#comments">https://github.com/processing/p5.js/wiki/JavaScript-basics#comments</a>.</p>
-					<p>You don't have to add a comment for every line, but I find it really helps me when I haven't looked at code for a while. It also helps others! It would have been really useful to have comments on the previous createImage example, wouldn't it? </p>
-				</section>
-				<section>
-					<h3>5. How images are made using arrays of pixels (continued).</h3>
-					<p>Finally, when you make new curly braces (either for a new function or a loop) you should indent your code.</p>
-					<p><a href="https://github.com/processing/p5.js/wiki/JavaScript-basics#indentation">https://github.com/processing/p5.js/wiki/JavaScript-basics#indentation</a>.</p>
-					<p>Most good editors (like <a href="https://www.sublimetext.com/">Sublime Text 3</a>) will do indentation for you automatically, and tidy your code for you too. See Edit > Line > Reindent in ST3.</p>
-					<p>I always use tabs rather than spaces. This is another long standing programming joke/argument/destroyer of relationships...</p>
-					<p><iframe width="560" height="315" src="https://www.youtube.com/embed/SsoOG6ZeyUI?rel=0" frameborder="0" allowfullscreen></iframe></p>
-				</section>
-				<section>
-					<h3>6. Changing pixel values to animate a static image.</li>.</h3>
-					<p></p>
-				</section>
-				<section>
-					<h3>Classes and Objects in JavaScript.</h3>
-					<p>A Class is just a way of storing both variables and functions in one place - instead of having loads of variables and functions everywhere you can put them all into a Class - from there you can make multiple instances of a Class - Objects. Functions that are inside Classes are called Methods.</p>
-					<p><a href="https://en.wikipedia.org/wiki/Object-oriented_programming">Object Orientated Programming</a> is a whole <a href="https://en.wikipedia.org/wiki/Programming_paradigm">programming paradigm</a> or way of coding.</p>
-				</section>
-				<section>
-					<h3>Classes and Objects in JavaScript.</h3>
-					<p>The following content is all from the <a href="https://github.com/processing/p5.js/wiki/JavaScript-basics">JavaScript Basics</a> section of the <a href="https://github.com/processing/p5.js/wiki">p5.js wiki</a>.</p>
-					<p><a href="https://github.com/processing/p5.js/wiki/JavaScript-basics#objects">Classes and Objects in JavaScript</a>. Don't forget to try it all out using the JavaScript console!</p>
-				</section>
-				<section>
-					<h3>Introduction to p5.js libraries.</h3>
-					<p>A library is just a set of useful Classes that help you do something.</p>
-					<p>The p5.js team maintains a list of libraries that work with p5.js:<br><a href="https://p5js.org/libraries/">https://p5js.org/libraries/</a></p>
-					<p>Let's try <a href="http://ability.nyu.edu/p5.js-speech/">speech</a>! Or make an <a href="https://p5js.org/reference/#/libraries/p5.dom">interface</a>!</p>
-					<p>Not only that but you can add ANY JavaScript library to p5.js, but sometimes it can be a <a href="https://github.com/processing/p5.js/wiki/Integrating-other-libraries">bit complicated</a>.</p>
-				</section>
-				<section>
-					<h3>How to load a gif in p5.js.</h3>
-					<p>Next we'd like to get on with the work that we set for ourselves in lecture one - to make an Animated GIF maker.</p>
-					<p>So how do I load animated gifs in p5.js?</p>
-					<p>Google: <a href="https://www.google.co.uk/search?q=animated+gif+p5.js">"animated gif p5.js"</a></p>
-				</section>
-				<section>
-					<h3>How to load a gif in p5.js.</h3>
-					<p><a href="https://github.com/antiboredom/p5.gif.js/tree/master">https://github.com/antiboredom/p5.gif.js/tree/master</a> looks great!</p>
-					<p>So lets download it.</p>
-					<p>And try it, by opening the file in the browser.</p>
-				</section>
-				<section>
-					<h3>How to load a gif in p5.js.</h3>
-					<p>It doesn't work. )-;</p>
-					<p>Don't panic! Lets look at the in JavaScript Console.</p>
-					<p>Hmmm. I don't know what that means, lets Google: <a href="https://www.google.co.uk/search?q=p5.js+Cross+origin+error">"p5.js cross origin error"</p>
-				</section>
-				<section>
-					<h3>How to load a gif in p5.js.</h3>
-					<p>Looks like I have to <a href="https://github.com/processing/p5.js/wiki/Local-server">install a server for p5.js</a>.</p>
-					<p>Lets follow the instructions to install node.js.</p>
-					<p>CAUTION: COMMAND LINE INTERFACE WARNING!</p>
-					<p>Let's go to the folder that contains the file we are trying to get working and run the webserver inside it, by dragging and dropping the folder onto the Terminal icon and running: "http-server -c-1".</p>
-					<p>Of course, we can use any gif we like with this program! Demo using giphy.gif instead.</p>
-				</section>
-				<section>
-					<h3>How to make a GUI (Graphical User Interface) in p5.js to display frames of a gif.</h3>
-					<p>Wouldn't it be great to be able to slide a slider instead of having to hold my mouse in one place?</p>
-					<p>Let's use a GUI library to let us do that via the <a href="https://p5js.org/libraries/">p5.js libraries page</a>.</p>
-					<p><a href="https://p5js.org/reference/#/libraries/p5.dom">p5.dom</a> looks good. Let's download it and try it.</p>
-				</section>
-				<section>
-					<h3>How to make a GUI (Graphical User Interface) in p5.js to display frames of a gif.</h3>
-					<p>The <a href="https://p5js.org/examples/">DOM examples</a> look good. So lets start with the old gif example from p5.gif.js and go from there.</p>
-					<p>OK, lets add the most basic p5.dom to it, just with both running together in the same sketch.js. First look at index.html and then sketch.js from the <a href="https://p5js.org/examples/dom-slider.html">Slider p5.DOM example</a> and then duplicate them over.</p>
-				</section>
-				<section>
-					<h3>How to make a GUI (Graphical User Interface) in p5.js to display frames of a gif.</h3>
-					<p>So now we have both running together, we can disable the mouse movement code, as we want it to be controlled by the GUI.</p>
-					<p>We cam get rid of both the G and B sliders too.</p>
-					<p>We can edit R to be called something better...</p>
-				</section>
-				<section>
-					<h3>How to make a GUI (Graphical User Interface) in p5.js to display frames of a gif.</h3>
-					<p>So lets set it to myFrame, and change to display the correct frame.</p>
-					<p>But how do I know the correct range?</p>
-					<p>That doesn't seem to be working, lets add console.log to see what is going on.</p>
-					<p>It's saying 0? I guess the gif hasn't loaded at that point.</p>
-				</section>
-				<section>
-					<h3>How to make a GUI (Graphical User Interface) in p5.js to display frames of a gif.</h3>
-					<p>So lets keep checking until it is loaded, THEN add the GUI</p>
-					<p>Use a boolean value! (I use this all the time in my code).</p>
-					<p>We can even display a loading message while we are waiting. How do we do that? Google <a href="https://www.google.com/search?q=displaying+text+in+p5.js">"displaying text in p5.js"</a>.</p>
-				</section>
-				<section>
-					<h3>How to output a gif in p5.js.</h3>
-					<p>Last time we managed to load a gif in p5.js and control it with a GUI. It would be nice to able to save out our work as a gif.</p>
-					<p>So let's Google: <a href="https://www.google.co.uk/search?q=save+gif+p5.js">"save gif p5.js"</a>.</p>
-					<p>Let's download all the files and run it (with Ad-Blocking disabled!).</p>
-				</section>
-				<section>
-					<h3>How to get a output a gif in p5.js (and get live camera input working).</h3>
-					<p>I'll need to run this using a local server, as in the previous lecture.</p>
-					<p>Looks like I found out how to get a live camera working in p5.js too!</p>
-				</section>
-				<section>
-					<h3>How to use forums.</h3>
-					<p>It's good to read and understand the <a href="https://p5js.org/community/">p5.js Community Statement</a>.</p>
-					<p>The <a href="https://forum.processing.org">Processing forum</a> is great.</p>
-					<p>The <a href="https://forum.processing.org/two/categories/p5-js">p5.js forum</a> is even greater.</p>
-					<p>The <a href="https://forum.processing.org/two/discussion/8042/processing-forum-rules-and-advices">Forum FAQ</a> is also important to read.</p>
-				</section>
-				<section>
-					<h3>How to mess with images</h3>
-					<p>So far we have just been drawing shapes, or drawing gifs or grabbing live video.</p>
-					<p>How can we mess with images? Lets have a look at the <a href="https://p5js.org/reference/#group-Image">image section of the p5.js reference</a>.</p>
-					<p><a href="https://p5js.org/reference/#/p5/filter">https://p5js.org/reference/#/p5/filter</a> looks useful.</p>
-				</section>
-				<section>
-					<h3>How to put it all together to make a gif maker.</h3>
-					<p>So lets put together all the code we've made over the past few lectures: gif loading, gui control, gif saving and filtering images.</p>
-					<p>First lets bring all the other libraries into the gif export example that we made last time.</p>
-				</section>
-				<section>
-					<h3>How to put it all together to make a gif maker.</h3>
-					<p>Bringing all the code into one file is a mess, but useful to be able to make sure that everything works together.</p>
-					<p>Next we need to add <a href="https://p5js.org/examples/dom-input-and-button.html">a button</a> instead of a mouse click to export the GIF.</p>
-					<p>You'll notice that the image is coming out at the wrong size - this is a bug with how p5.js works around Retina displays. We need to add a call to <a href="https://p5js.org/reference/#/p5/pixelDensity">pixelDensity</a> to fix this problem.</p>
-				</section>
-				<section>
-					<h3>How to put it all together to make a gif maker.</h3>
-					<p>Once that works lets add a way of choosing between GIF input and live camera input. Looking in the p5.dom Reference, there is an example called <a href="https://p5js.org/reference/#/p5/createSelect">createSelect</a>.</p>
-					<p>Once that works to export, lets add another option - with a filter effect. Threshold is fine - but you could use any of the <a href="https://p5js.org/reference/#/p5/filter">Filter options</a>.</p>
-				</section>
-				<section>
-					<h3>7. Brief: the materiality of pixels.</h3>
-					<ul>
-						<li>What do you want to explore about a grid of pixels?</li>
+						<li>In your pairs, what do you want your computer to see? Why? When? Where? For whom?</li>
 						<li>You live in a visual culture, what do you want to question about it?</li>
 						<li><a href="https://www.penguin.co.uk/books/196428/how-to-see-the-world/9780141977409.html">How to See the World</a> by <a href="http://www.nicholasmirzoeff.com/">Nicholas Mirzoeff</a> - a book on visual culture.</li>
-						<li>My favourite is <a href="https://en.wikipedia.org/wiki/Agnes_Martin">Agnes Martin</a>. <a href="https://www.tate.org.uk/whats-on/tate-modern/exhibition/agnes-martin/who-is-agnes-martin">The Tate Modern on Agnes Martin (great quote!) </a>.</li>
-						<li><a href="https://en.wikipedia.org/wiki/Sol_LeWitt">Sol LeWitt</a> was a pioneer in minimalist and conceptual art, drawing up rules or algorithms that then could be carried out by anyone - "The system is the work of art; the visual work of art is the proof of the system"</li>
-						<li><a href="http://printingcode.runemadsen.com/lecture-intro/">History of Design Systems</a> by <a href="https://runemadsen.com/">Rune Madsen</a> has a series of references on Sol LeWitt and others.</li>
-						<li>Great <a href="https://www.artnome.com/news/2018/8/8/why-love-generative-art">recent article on Generative Art</a> by Jason Bailey.</li>
-						<li><a href="http://solvingsol.com/">Solving Sol</a>, Javascript implementations of his works.</li>
+						<li><a href="https://en.wikipedia.org/wiki/Feedback">Feedback</a> is when you feed the output of a signal into the input of it. It's a very powerful technique that can be used in a variety of fields:</li>
+						<li><a href="https://en.wikipedia.org/wiki/Video_feedback">Video feedback</a>, the video equivalent.</li>
+						<li><a href="https://en.wikipedia.org/wiki/Nam_June_Paik">Nam June Paik</a>, <a href="http://medienkunstnetz.de/works/tv-buddha/">TV-Buddha</a>. <a href="http://medienkunstnetz.de/mediaartnet/">Media Art Net</a> is a great resource.</li>
+						<li><a href="https://en.wikipedia.org/wiki/Douglas_Trumbull">Douglas Trumbull</a>, <a href="https://www.youtube.com/watch?v=ou6JNQwPWE0">2001 Star Gate Sequence</a>.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>4. Brief: letting your computer see (continued).</h3>
+					<ul>
+						<li><a href="http://flong.com/texts/lists/slit_scan/">An Informal Catalogue of Slit-Scan Video Artworks and Research by Golan Levin.</a> Golan's <a href="http://flong.com/projects/">portfolio</a>. <a href="https://editor.p5js.org/full/B1L5j8uk4">Slit-scan demo in p5js by Daniel Shiffman</a>.</li>
+						<li><a href="http://www.newmedia-art.org/cgi-bin/show-oeu.asp?ID=150000000031079&lg=GBR">Going around the corner piece</a> by <a href="https://en.wikipedia.org/wiki/Bruce_Nauman">Bruce Nauman</a>.</li>
+						<li>Tell the story of making <a href="https://www.youtube.com/watch?v=IQ9aw9pLfQY">audio reactive visuals for Massive Attack in 2008</a>.</li>
+						<li>Finally, <a href="https://twitter.com/gr3gjsmith/status/1017073209903058945">a great Twitter thread on the history of new media art</a> from <a href="http://serialconsign.com/">Greg J. Smith</a>.</li>
 						<li>All works must be published on the <a href="https://editor.p5js.org/">brand new p5.js Web Editor</a>.</li>
 					</ul>
 				</section>
@@ -384,7 +84,7 @@
 						<li>More about me: <a href="https://twitter.com/joelgethinlewis">@joelgethinlewis</a></li>
 						<li>Get in contact via: <a href="https://www.joelgethinlewis.com/">www.joelgethinlewis.com</a></li>
 						<li>Website:<br><a href="https://jgl.github.io/TheParallaxView/">https://jgl.github.io/TheParallaxView/</a></li>
-						<li>Today's slides:<br><a href="https://jgl.github.io/TheParallaxView/lecture1.html">https://jgl.github.io/TheParallaxView/lecture1.html</a></li>
+						<li>Today's slides:<br><a href="https://jgl.github.io/TheParallaxView/lecture3.html">https://jgl.github.io/TheParallaxView/lecture3.html</a></li>
 					</ul>
 				</section>
 			</div>
