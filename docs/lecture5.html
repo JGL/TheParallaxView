@@ -32,6 +32,7 @@
 				<section>
 					<h3>What I'm going to talk about today:</h3>
 					<ol>
+						<li>What Machine Learning, Deep Learning and ml5.js are.</li>
 						<li>Classification of images.</li>
 		                <li>Transferring the style of an image to another.</li>
 		                <li>Live tracking of body pose.</li>
@@ -40,40 +41,66 @@
 					</ol>
 				</section>
 				<section>
-					<h3>1. Classification of images.</h3>
+					<h3>1. What Machine Learning, Deep Learning and ml5.js are.</h3>
 					<ul>
-						<li>.</li>
+						<li>What is <a href="https://en.wikipedia.org/wiki/Machine_learning">Machine Learning</a>? What is <a href="https://en.wikipedia.org/wiki/Deep_learning">Deep Learning</a>?</li>
+						<li>Let's watch <a href="https://www.youtube.com/watch?v=2qJ1wrLcgx0">Introduction to Deep Learning</a> by <a href="https://twitter.com/DasTeutelbier">Teubi</a> at the FANTASTIC (I watch live every year) <a href="https://en.wikipedia.org/wiki/Chaos_Communication_Congress">Chaos Communication Congress</a> - the <a href="https://events.ccc.de/congress/2018/wiki/index.php/Main_Page">2018 wiki</a> is a great resource.</li>
+						<li>Also see <a href="https://www.youtube.com/watch?v=jmznx0Q1fP0">Daniel Shiffman's "A Beginner's Guide to Machine Learning with ml5.js"</a> - particularly his discussions on algorithms, models and data sets - particularly what we are doing - using existing models, rather than training our own - and criticality - we should be using machine learning for art and design so we can critcise goverments (and others) use of it.</li>
 					</ul>
 				</section>
 				<section>
-					<h3>2. Transferring the style of an image to another.</h3>
+					<h3>1. What Machine Learning, Deep Learning and ml5.js are (continued).</h3>
 					<ul>
-						<li>.</li>
+						<li>It's important to remember that there are <a href="https://blog.keras.io/the-limitations-of-deep-learning.html">limitations to Deep Learning</a>.</li>
+						<li>Interesting <a href="https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d">article on the difference between supervised and unsupervised learning</a>.</li>
+						<li><a href="https://www.youtube.com/user/Computerphile">Computerphile</a> has some great videos on <a href="https://www.youtube.com/watch?v=py5byOOHZM8&list=PLzH6n4zXuckoezZuZPnXXbvN-9jMFV0qh">neural networks</a>, <a href="https://www.youtube.com/watch?v=l42lr8AlrHk">deep learning</a> and other interesting things.</li>
+						<li>Lets look at some <a href="https://ml5js.org/docs/quick-start">ml5.js examples</a> from the <a href="https://ml5js.org/">ml5.js website</a>.</li>
 					</ul>
 				</section>
 				<section>
-					<h3>3. Live tracking of body pose.</h3>
+					<h3>2. Classification of images.</h3>
 					<ul>
-						<li>.</li>
+						<li>This example, <a href="https://editor.p5js.org/jgl/sketches/61jpT0VUY">Video Classification</a>, is based on <a href="https://www.youtube.com/watch?v=D9BoBSkLvFo">Daniel Shiffman's tutorial "ml5.js: Webcam Image Classification"</a> and <a href="<a href="https://kylemcdonald.github.io/cv-examples/">Kyle McDonalds CV Examples</a>.</li>
+						<li>Remember - the model we are using is <a href="https://github.com/ml5js/ml5-library/blob/master/src/utils/IMAGENET_CLASSES.js">only trained on a few image classes</a>. It can't see anything it hasn't been trained for! This is something to bare in mind whenever you use someone elses model - what has it been trained for? What biases might it have? Via <a href="https://www.youtube.com/watch?v=yNkAuWz5lnY">Daniel Shiffman's tutorial "ml5.js: Image Classification with MobileNet"</a>.</li></li>
+						<li>Also try this <a href="https://editor.p5js.org/jgl/sketches/zcX4fxDbP">YOLO (You Only Look Once) (Chrome Only!) demo</a> again from <a href="<a href="https://kylemcdonald.github.io/cv-examples/">Kyle McDonalds CV Examples</a>.</li>
 					</ul>
 				</section>
 				<section>
-					<h3>4. Brief: letting your computer learn.</h3>
+					<h3>3. Transferring the style of an image to another.</h3>
+					<ul>
+						<li>Unfortunately, there is <a href="https://github.com/ml5js/ml5-examples/issues/6">currently a bug with getting ml5.js working with the p5.js editor</a>.</li>
+						<li>So we'll have to run our code locally, and <a href="https://github.com/processing/p5.js/wiki/Local-server">run a local server</a> so that we can see it.</li>
+						<li>Download <a href="https://www.joelgethinlewis.com/downloads/2019_02_27_VideoStyleTransferDemo.zip">this zip file containing a live video style transfer example</a> to your desktop. It will only work if you run your own local web server and view the demo in Chrome.</li>
+						<li>If you want to learn how to train your own models (advanced!), you can follow these two tutorials from The Coding Train: <a href="https://www.youtube.com/watch?v=STHRNIJc-vI">"Style Transfer Part 1: Training a model with on Spell with Yining Shi"</a> and <a href="https://www.youtube.com/watch?v=S_I0SGAO73A">"Style Transfer Part 2: Real-Time Style Transfer with ml5.js with Yining Shi"</a>.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>4. Live tracking of body pose.</h3>
+					<ul>
+						<li>Let's try this <a href="https://editor.p5js.org/jgl/sketches/XMy0GHKDIS">example of live tracking of body pose</a>. Based on <a href="<a href="https://kylemcdonald.github.io/cv-examples/">Kyle McDonalds CV Examples</a>.</li>
+						<li>What could you use this for? This was only previously possible using a desktop computer and a 3D sensor, such as the <a href="https://en.wikipedia.org/wiki/Kinect">Microsoft Kinect</a>. A newer version of the Kinect runs the just announced <a href="https://www.youtube.com/watch?v=eqFqtAJMtYE">Hololens 2</a>.</li>
+						<li>An example of the cutting edge of this kind of work is <a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose">OpenPose</a>.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>5. Brief: letting your computer learn.</h3>
 					<ul>
 						<li>In your pairs, what do you want your computer to learn?</li>
 						<li>About what is inside images?</li>
 						<li>About the style of images?</li>
 						<li>About the movement of humans?</li>
 						<li>See this great playlist by Daniel Shiffman: <a href="https://www.youtube.com/watch?v=jmznx0Q1fP0&list=PLRqwX-V7Uu6YPSwT06y_AEYTqIwbeam3y">"A Beginner's Guide to Machine Learning with ml5.js"</a>.</li>
-						<li>All works must be published on the <a href="https://editor.p5js.org/">brand new p5.js Web Editor</a>.</li>
+						<li>See this list of <a href="https://experiments.withgoogle.com/collection/ai">AI Experiments from Google</a>.</li>
+						<li>Also see the <a href="https://ml4a.github.io/">Machine Learning 4 Artists (ML4A) website</a> by <a href="http://genekogan.com/">Gene Kogan</a>.</li>
+						<li>All works should be published on the <a href="https://editor.p5js.org/">brand new p5.js Web Editor</a> if possible, but local copies are ok - make sure you email me the complete zip if you just work locally!</li>
 					</ul>
 				</section>
 				<section>
-					<h3>5. Discussion: Kyle McDonald.</h3>
+					<h3>6. Discussion: Kyle McDonald.</h3>
 					<ul>
-						<li>In session 3 we'll be drew on <a href="http://www.kylemcdonald.net/">Kyle McDonald</a>'s <a href="https://kylemcdonald.github.io/cv-examples/">cv-examples</a>. Soon, we'll be connecting with him live.</li>
-						<li>Let's spend a little time looking at <a href="http://www.kylemcdonald.net/">his work</a> first. What do you all think? Why?</li>
-						<li>Let's connect with him.</li>
+						<li>In session 3 we drew on <a href="http://www.kylemcdonald.net/">Kyle McDonald</a>'s <a href="https://kylemcdonald.github.io/cv-examples/">cv-examples</a>. Today, we'll be connecting with him live.</li>
+						<li>What questions do you have for Kyle?</li>
+						<li>Let's connect with him now.</li>
 					</ul>
 				</section>
 				<section>
